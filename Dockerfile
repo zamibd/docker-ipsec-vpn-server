@@ -1,6 +1,6 @@
 #
 # Maintainer: zami <hi@imzami.com>
-# Description: Docker image for IPsec/L2TP/IKEv2 VPN server (Alpine 3.21)
+# Description: Docker image for IPsec/L2TP/IKEv2 VPN server
 # License: CC BY-SA 3.0
 #
 
@@ -66,4 +66,4 @@ LABEL maintainer="zami <hi@imzami.com>" \
     org.opencontainers.image.authors="zami <hi@imzami.com>" \
     org.opencontainers.image.title="IPsec VPN Server on Alpine" \
     org.opencontainers.image.description="Docker image to run an IPsec VPN server (IPsec/L2TP, Cisco IPsec, IKEv2) on Alpine." \
-    org.opencontainers.image.url="https://github.com/hwdsl2/docker-ipsec-vpn-server"
+    org.opencontainers.image.url="https://github.com/hwdsl2/vpn-ipsec"
