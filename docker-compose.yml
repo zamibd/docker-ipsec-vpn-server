@@ -5,7 +5,7 @@ volumes:
 
 services:
   vpn:
-    image: hwdsl2/ipsec-vpn-server
+    image: imzami/vpn-ipsec
     restart: always
     env_file:
       - ./vpn.env
@@ -13,8 +13,8 @@ services:
       - "500:500/udp"
       - "4500:4500/udp"
     privileged: true
-    hostname: ipsec-vpn-server
-    container_name: ipsec-vpn-server
+    hostname: vpn-ipsec
+    container_name: vpn-ipsec
     volumes:
       - ikev2-vpn-data:/etc/ipsec.d
       - /lib/modules:/lib/modules:ro

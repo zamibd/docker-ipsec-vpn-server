@@ -1,9 +1,4 @@
-#
-# Maintainer: zami <hi@imzami.com>
-# Description: Docker image for IPsec/L2TP/IKEv2 VPN server
-# License: CC BY-SA 3.0
-#
-
+ 
 FROM alpine:latest
 
 ARG SWAN_VER=5.3
@@ -45,13 +40,14 @@ RUN set -eux \
          nss-dev libcap-ng-dev libevent-dev curl-dev nspr-dev
 
 # Download IKEv2 helper script
-RUN wget -t 3 -T 30 -nv -O /opt/src/ikev2.sh https://github.com/hwdsl2/setup-ipsec-vpn/raw/909bf12175252e2e167c36c3b12d174c01f0824f/extras/ikev2setup.sh \
+RUN wget -t 3 -T 30 -nv -O /opt/src/ikev2.sh https://raw.githubusercontent.com/zamibd/setup/refs/heads/main/setup-ipsec-vpn.sh \
     && chmod +x /opt/src/ikev2.sh \
     && ln -s /opt/src/ikev2.sh /usr/bin
 
 # Copy run script
-COPY ./run.sh /opt/src/run.sh
-RUN chmod 755 /opt/src/run.sh
+RUN wget -t 3 -T 30 -nv -O /opt/src/run.sh \
+    https://raw.githubusercontent.com/zamibd/setup/refs/heads/main/run.sh \
+    && chmod 755 /opt/src/run.sh
 
 # Expose VPN ports
 EXPOSE 500/udp 4500/udp
@@ -66,4 +62,4 @@ LABEL maintainer="zami <hi@imzami.com>" \
     org.opencontainers.image.authors="zami <hi@imzami.com>" \
     org.opencontainers.image.title="IPsec VPN Server on Alpine" \
     org.opencontainers.image.description="Docker image to run an IPsec VPN server (IPsec/L2TP, Cisco IPsec, IKEv2) on Alpine." \
-    org.opencontainers.image.url="https://github.com/hwdsl2/vpn-ipsec"
+    org.opencontainers.image.url="https://github.com/imzami/vpn-ipsec"
